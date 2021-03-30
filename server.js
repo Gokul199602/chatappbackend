@@ -11,12 +11,8 @@ mysqlCon.connectToServer( function( err, client ) {
 } );
 
 
-app.use(require('./routes/login')); 
-app.use(require('./routes/creategroup'));
-app.use(require('./routes/users'));
+app.use(require('./routes/')); 
 
-
-app.use(require('./routes/login')); 
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
