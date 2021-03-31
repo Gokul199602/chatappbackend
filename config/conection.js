@@ -3,9 +3,9 @@ const mysql = require('mysql');
 var http = require('http');
 const app = express();
 const connection = mysql.createConnection({
-  host: 'localhost',
+  host: 'database-1.c4duxnxp6vd4.us-east-2.rds.amazonaws.com',
   user: 'root',
-  password: '',
+  password: 'Flatron12!',
   database: 'chatapp'
 });
 
