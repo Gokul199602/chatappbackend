@@ -10,6 +10,12 @@ exports.checkEmail = function(email,connection, callback) {
     })
 }
 
+exports.getusers = function(connection,callback) {
+    connection.query(`SELECT id,FirstName,LastName,email FROM users`,function (err, result, fields){
+        callback(err, result, fields);
+    })
+}
+
 exports.registerForm = function(firstName,lastName,email,password,connection, callback) {
     connection.query(`INSERT INTO users (FirstName,LastName,email,password) VALUES ("${firstName}","${lastName}","${email}","${password}")`, function (err, result, fields){
         callback(err, result, fields);

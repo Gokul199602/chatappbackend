@@ -22,7 +22,7 @@ exports.login = function(req, res, next) {
       else
       {
           sendResponse = false;
-          responseString = "No users Found";
+          responseString = "Please check your credentials";
       }
       res.setHeader('Content-Type', 'application/json');
       res.end(JSON.stringify({response:sendResponse,responseString:responseString,data:responseObj}));
@@ -63,6 +63,23 @@ exports.register = function(req, res, next)
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({response:sendResponse,responseString:responseString}));
       }
+    })
+}
+
+exports.getallusers = function(req, res, next)
+{
+    const connection = mysql_db.getDb();
+    models.getusers(connection, (err, result, fields)=>{
+      var sendResponse = true,
+      responseString = "Users successfully fetched",
+      responseObj = result;
+      if(err)
+      {
+        sendResponse = false;
+        responseString = "Error";
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify({response:sendResponse,responseString:responseString,data:responseObj}));
     })
 }
 
